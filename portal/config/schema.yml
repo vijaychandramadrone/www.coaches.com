@@ -1,0 +1,146 @@
+# CTI Student Portal schema
+#
+# symfony propel:build-model
+# symfony propel:build-sql
+# symfony propel:insert-sql
+#
+propel:
+#
+#
+# Event table, represents an event such as a course being held on a date
+# This table is a proxy for events in FileMaker
+#
+  event:
+    id: {type: INTEGER, primaryKey: true, required: true, autoIncrement: true}
+    fmid: {type: INTEGER}
+    name:           longvarchar
+    location:       longvarchar
+    course_type_id: varchar(32)
+    start_date:     varchar(32)
+    end_date:       varchar(32)
+    max_enrollment:     {type: INTEGER}
+    current_enrollment: {type: INTEGER}
+    max_waitlist:       {type: INTEGER}
+    current_waitlist:   {type: INTEGER}
+    max_assisting_enrollment:     {type: INTEGER}
+    current_assisting_enrollment: {type: INTEGER}
+    max_assisting_waitlist:       {type: INTEGER}
+    current_assisting_waitlist:   {type: INTEGER}
+    booking_link:   longvarchar
+    leader_name:    longvarchar
+    created_at:
+    updated_at:
+
+    extra1:  longvarchar
+    extra2:  longvarchar
+    extra3:  longvarchar
+    extra4:  longvarchar
+    extra5:  longvarchar
+    extra6:  longvarchar
+    extra7:  longvarchar
+    extra8:  longvarchar
+    extra9:  longvarchar
+    extra10:  longvarchar
+    extra11:  longvarchar
+    extra12:  longvarchar
+    extra13:  longvarchar
+    extra14:  longvarchar
+    extra15:  longvarchar
+    extra16:  longvarchar
+    extra17:  longvarchar
+    extra18:  longvarchar
+    extra19:  longvarchar
+    extra20:  longvarchar
+
+#
+#
+# Student table, represents an student
+# This table is a proxy for students in FileMaker
+#
+  student:
+    id: {type: INTEGER, primaryKey: true, required: true, autoIncrement: true}
+    fmid:           {type: INTEGER}
+    first_name:     varchar(100)
+    last_name:      varchar(100)
+    email:          varchar(100)
+    reset_key:      varchar(100)
+    new_email:      varchar(100)
+    new_email_request_time: timestamp
+    home_address:   longvarchar
+    city:           longvarchar
+    state_prov:     longvarchar
+    country:        longvarchar
+    zip_postal:     longvarchar
+    home_phone:     varchar(100)
+    cell_phone:     varchar(100)
+    business_phone: varchar(100)
+    level:          {type: INTEGER}
+    password:       varchar(100)
+    salt:           varchar(100)
+    reset_key:      varchar(100)
+    created_at:
+    updated_at:
+
+    extra1:  longvarchar
+    extra2:  longvarchar
+    extra3:  longvarchar
+    extra4:  longvarchar
+    extra5:  longvarchar
+    extra6:  longvarchar
+    extra7:  longvarchar
+    extra8:  longvarchar
+    extra9:  longvarchar
+    extra10:  longvarchar
+    extra11:  longvarchar
+    extra12:  longvarchar
+    extra13:  longvarchar
+    extra14:  longvarchar
+    extra15:  longvarchar
+    extra16:  longvarchar
+    extra17:  longvarchar
+    extra18:  longvarchar
+    extra19:  longvarchar
+    extra20:  longvarchar
+
+#
+#
+# Enrollment table, represents an a student enrolled in a course
+# This table is a proxy for courses in FileMaker
+#
+  enrollment:
+    id:         {type: INTEGER, primaryKey: true, required: true, autoIncrement: true}
+    fmid:       {type: INTEGER}
+    student_id: {type: INTEGER, foreignTable: student, foreignReference: id, onDelete: cascade}
+    event_id:   {type: INTEGER, foreignTable: event, foreignReference: id}
+    date:       timestamp
+    start_date: varchar(32)
+    end_date:   varchar(32)  
+    type:       varchar(32)
+#   enrolled, waitlisted, assisting, assisting_waitlisted
+    updated_at:
+    created_at:
+
+    extra1:  longvarchar
+    extra2:  longvarchar
+    extra3:  longvarchar
+    extra4:  longvarchar
+    extra5:  longvarchar
+    extra6:  longvarchar
+    extra7:  longvarchar
+    extra8:  longvarchar
+    extra9:  longvarchar
+    extra10:  longvarchar
+    extra11:  longvarchar
+    extra12:  longvarchar
+    extra13:  longvarchar
+    extra14:  longvarchar
+    extra15:  longvarchar
+    extra16:  longvarchar
+    extra17:  longvarchar
+    extra18:  longvarchar
+    extra19:  longvarchar
+    extra20:  longvarchar
+
+
+
+#    student_id:   {type: INTEGER, foreignTable: student, foreignReference: id, onDelete: cascade}

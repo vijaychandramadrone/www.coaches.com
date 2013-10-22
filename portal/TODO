@@ -1,0 +1,62 @@
+link to assisting page:
+http://www.thecoaches.com/docs/coach-training/be-an-assistant/index-portal1.html
+
+
+Apr 29, 2013
+* add admin search funtion to find student by name
+** list students found and courses enrolled for, add [ ] cancel checkbox
+* add cancel function (but without email)
+
+
+Feb 19, 2013
+* (DONE) finish Enrollment->isAssistingWaitlisted()  (criteria: leadership, yes, cpcc/cert, 45 days, everyone else, 30 days)
+* (DONE) add admin page to check for assisting events, see if anyone on waitlist is now eligible.
+* finish EventPeer::doAssistingWaitlistChecks()
+
+
+
+
+Jan 30, 2013
+* (DONE) add isAdmin (extra4 or extra5) to Student
+* (DONE) add admin page to left nav
+* on admin page, show student search similar to coach match search - StudentPeer::search
+* click on student, show enrollments Student::getMySchedule
+** have cancel link for each enrollment
+
+
+Jan 29, 2013
+* Add Event::triggerAssistingWaitlistEmails() - for when someone cancels assisting and there are other folks eligible (ie within window)
+* Add event/checkAssistingWaitlist action (with key) to check assisting events that are 45 and 30 days out
+* Add EventPeer::getAssistingNotified( $days ) that are within those days but have not sent waitlist notifications
+** ie: get events where start date is less than $days and getAssistingNotified() > $days  (??? double check this)
+* Add Event::setAssistingNotified( $days )  
+* Add cronjob to check for 45 days out, send email to CPCC/cert students, 30 days out, send email to everyone waitlisted
+
+
+
+Jan 21, 2013
+
+Phase 1
+* (DONE) Copy (by SVN) the new portal_course_*.php files to cti-crm.thecoaches.com
+* (DONE) Add copious file_put_contents debug lines into EnrollmentPeer::register and Enrollment::cancelEnrollment
+* (DONE) Test an assisting register and cancel
+
+Phase 2
+* (DONE) Add Leadership Program graduate field to database Student::Extra4
+* (DONE) Add LP checkbox to portal_account.php
+* Find Dee Dee email that outlines rules for accepting LP graduates, CPCCs and students for assisting - see Oct 8 email
+
+
+
+My notes and estimates
+* Add note to Assisting page on Leadership/CPCC priority (.25 hours)
+* Add questions to the form (.75 hours)
+* Verify that LP/CPCC registrants are at or above that "level" per FM (.5 hours)
+* Place non-LP/CPCC registrants on waitlist, if more than 30 days out (2 hours)
+* 30 days prior, offer (via email) any open slots (2 hours) 
+
+
+
+Jan 9, 2013
+
+* Change student cal so that there are two sections, upcoming and past courses 

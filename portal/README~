@@ -1,0 +1,40 @@
+STUDENT PORTAL
+==============
+
+
+Purpose:
+To allow CTI students to register for free courses and to register to assist in courses that they have already taken. As of 6/18/13, all registrations are no-cost, so no credit card transactions are required.
+
+
+
+Description:
+Students can sign in using their email address and password stored in FileMaker. Once signed in, they can view a calendar of events that they are eligible for. Events that they are not eligible for are not displayed. Eligibility is determined by their "level" which indicates how far they have progressed in the core course curriculum.
+
+Once a student selects a course, they are registered directly in the FileMaker database. The student portal communicates to FileMaker via HTTP calls. 
+
+Student can also update some of their profile information stored in FileMaker.
+
+Available courses pulled from FileMaker every 15 minutes via cronjob. 
+
+
+Technical Description:
+
+
+The URL is currently http://www.thecoaches.com/portal/
+
+The Coach Match webapp is written in PHP, using Symfony 1.2.4 framework. See http://symfony.com/legacy/doc/book/1_2
+
+The ORM is Propel 1.3.0. See http://symfony.com/legacy/doc/book/1_2/en/08-Inside-the-Model-Layer
+
+Please note that in Propel, each model is represented by a model and a peer. The peer is similar to a "Collection of Models" in other ORMs. 
+
+The schema is specified in config/schema.yml
+
+Models ( lib/model/* )
+====================
+
+
+
+Modules ( apps/frontend/modules/* )
+===================================
+

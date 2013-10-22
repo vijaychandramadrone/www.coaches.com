@@ -1,0 +1,48 @@
+all:
+  is_secure: true
+
+index:
+  is_secure: false
+
+error404:
+  is_secure: false
+
+basicTemplate:
+  is_secure: false
+
+problem:
+  is_secure: false
+
+login:
+  is_secure: false
+
+maintenance:
+  is_secure: false
+
+logout:
+  is_secure: false
+
+loginProcess:
+  is_secure: false
+
+requestNewPassword:
+  is_secure: false
+
+requestNewPasswordProcess:
+  is_secure: false
+
+newEmail:
+  is_secure: false
+
+newPassword:
+  is_secure: false
+
+newPasswordProcess:
+  is_secure: false
+
+updateEventsFromFM:
+  is_secure: false
+
+checkAssistingWaitlists:
+  is_secure: false
+

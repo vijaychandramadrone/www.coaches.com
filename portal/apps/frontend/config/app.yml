@@ -1,0 +1,28 @@
+# default values
+all:
+  ctidatabase:
+    server: 127.0.0.1
+    port: 3306
+    user: cticoaches
+    password: 
+  webcomp:
+    postkey: fjgh15t
+    postkey2: fjgh12fgt
+    baseurl: http://crm.thecoaches.com/fmi-test/webcomp2_newFM
+    authen: authenticate.php
+    recordexists: abletogetrecord.php
+    newpw: set_pw.php  
+    commlog: new_commlog.php
+    account: portal_account.php
+    account_update: portal_account_update.php
+    account_email: portal_account_email.php
+    register: portal_course_register.php
+    cancel: portal_course_cancel.php
+    waitlist: portal_course_waitlist.php
+    unenroll: portal_unenroll.php
+    unwaitlist: portal_unwaitlist.php
+    enrollletter: portal_enroll_letter.php
+    waitlistletter: portal_waitlist_letter.php
+    recordexists: portal_record_exists.php
+    events: portal_events.php
+    courses: portal_courses.php

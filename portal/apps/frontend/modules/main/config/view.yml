@@ -1,0 +1,46 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+myScheduleSuccess:
+  layout:         layout-simple
+
+mySchedule2Success:
+  layout:         layout-assisting
+
+mySchedule3Success:
+  layout:         layout-simple
+
+cancelSuccess:
+  layout:         layout-simple
+
+cancelConfirmationSuccess:
+  layout:         layout-simple
+
+helpSuccess:
+  layout:         layout-simple
+
+basicTemplateSuccess:
+  layout:         layout-generic
+
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    #title:        symfony project
+    #description:  symfony project
+    #keywords:     symfony, project
+    #language:     en
+    #robots:       index, follow
+
+  stylesheets:    [main.css]
+
+  javascripts:    []
+
+  has_layout:     on
+  layout:         layout-simple-login
+
+
+
+

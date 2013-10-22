@@ -1,0 +1,17 @@
+all:
+  is_secure: true
+
+index:
+  is_secure: false
+
+login:
+  is_secure: false
+
+loginProcess:
+  is_secure: false
+
+requestNewPassword
+  is_secure: false
+
+requestNewPasswordProcess
+  is_secure: false

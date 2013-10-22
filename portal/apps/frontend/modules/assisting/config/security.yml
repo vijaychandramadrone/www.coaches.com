@@ -1,0 +1,5 @@
+all:
+  is_secure: true
+
+registerStep1:
+  is_secure: false

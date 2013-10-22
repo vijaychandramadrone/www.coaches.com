@@ -1,0 +1,169 @@
+diff --git a/portal/apps/frontend/modules/assisting/actions/actions.class.php b/portal/apps/frontend/modules/assisting/actions/actions.class.php
+index 52b30a0..5ce4f52 100644
+--- a/portal/apps/frontend/modules/assisting/actions/actions.class.php
++++ b/portal/apps/frontend/modules/assisting/actions/actions.class.php
+@@ -87,12 +87,17 @@ class assistingActions extends sfActions
+ 
+     // assign event1 if available
+     $event    = EventPeer::retrieveByFmid( $this->event1 );
+-    if( isset($event) && !$event->isWaitlisted() ){
++    if( isset($event)){
+       $event_id = $event->getId();
+       if($student->eventIdIsEligible( $event_id )){
+         // register enrollment and redirect
+        
+-        $result = $student->assist( $event_id );
++        if($event->isWaitlisted() ){
++          $result = $student->waitlistAssist( $event_id );
++        }
++        else {
++          $result = $student->assist( $event_id );
++        }
+         
+         $this->msg = $result['msg'];
+         $enrollment = $result['enrollment'];
+@@ -105,20 +110,29 @@ class assistingActions extends sfActions
+       else {
+         // you are not eligible for this event
+         $this->getUser()->setAttribute('event1_fail','not eligible for event1: '.$this->event1.' (event id: '.$event_id.')');
++        $this->redirect('assisting/'.$student->getEventEligibilityStatusMsg());
+       }
+     }
+     else {
+       $this->getUser()->setAttribute('event1_fail','event1 not in system: '.$this->event1);
++      //The template registerTryAgainLater_1 contains a 
++      // message "An error has occurred with your account.  Please contact CTI Customer Service at 1-800-691-6008, option 1 for assistance."
++      $this->redirect('assisting/registerTryAgainLater_1');
+     }
+ 
+     // assign event2 if available
+     $event    = EventPeer::retrieveByFmid( $this->event2 );
+-    if(isset($event) && !$event->isWaitlisted()){
++    if(isset($event)){
+       $event_id = $event->getId();
+       if($student->eventIdIsEligible( $event_id )){
+         // register enrollment and redirect
+       
+-        $result = $student->assist( $event_id );
++        if($event->isWaitlisted() ){
++          $result = $student->waitlistAssist( $event_id );
++        }
++        else {
++          $result = $student->assist( $event_id );
++        }
+         
+         $this->msg = $result['msg'];
+         $enrollment = $result['enrollment'];
+@@ -130,11 +144,15 @@ class assistingActions extends sfActions
+       }
+       else {
+         // you are not eligible for this event
+-        $this->getUser()->setAttribute('event2_fail','not eligible for event2: '.$this->event1.' (event id: '.$event_id.')');
++        $this->getUser()->setAttribute('event2_fail','not eligible for event2: '.$this->event2.' (event id: '.$event_id.')');
++        $this->redirect('assisting/'.$student->getEventEligibilityStatusMsg());
+       }
+     }
+     else {
+-      $this->getUser()->setAttribute('event2_fail','event2 not in system: '.$this->event1);
++      $this->getUser()->setAttribute('event2_fail','event2 not in system: '.$this->event2);
++      //The template registerTryAgainLater_1 contains a 
++      // message "An error has occurred with your account.  Please contact CTI Customer Service at 1-800-691-6008, option 1 for assistance."
++      $this->redirect('assisting/registerTryAgainLater_1');
+     }
+ 
+     // assign event3 if available
+@@ -143,14 +161,12 @@ class assistingActions extends sfActions
+       $event_id = $event->getId();
+       if($student->eventIdIsEligible( $event_id )){
+         // register enrollment and redirect
+-        //if($event->isWaitlisted() ){
+-        //  $result = $student->waitlistAssist( $event_id );
+-        //}
+-        //else {
+-
+-        $result = $student->assist( $event_id );
+-          
+-        //}
++        if($event->isWaitlisted() ){
++          $result = $student->waitlistAssist( $event_id );
++        }
++        else {
++          $result = $student->assist( $event_id );
++        }
+         $this->msg = $result['msg'];
+         $enrollment = $result['enrollment'];
+         if(preg_match("/ok/",$this->msg)){
+@@ -161,11 +177,15 @@ class assistingActions extends sfActions
+       }
+       else {
+         // you are not eligible for this event
+-        $this->getUser()->setAttribute('event3_fail','not eligible for event3: '.$this->event1.' (event id: '.$event_id.')');
++        $this->getUser()->setAttribute('event3_fail','not eligible for event3: '.$this->event3.' (event id: '.$event_id.')');
++        $this->redirect('assisting/'.$student->getEventEligibilityStatusMsg());
+       }
+     }
+     else {
+-      $this->getUser()->setAttribute('event3_fail','event3 not in system: '.$this->event1);
++      $this->getUser()->setAttribute('event3_fail','event3 not in system: '.$this->event3);
++      //The template registerTryAgainLater_1 contains a 
++      // message "An error has occurred with your account.  Please contact CTI Customer Service at 1-800-691-6008, option 1 for assistance."
++      $this->redirect('assisting/registerTryAgainLater_1');
+     }
+     
+ 
+@@ -216,10 +236,14 @@ class assistingActions extends sfActions
+       else {
+         // you are not eligible for this event
+         $this->getUser()->setAttribute('event1_fail','not eligible for event id: '.$event_id);
++        $this->redirect('assisting/'.$student->getEventEligibilityStatusMsg());
+       }
+     }
+     else {
+       $this->getUser()->setAttribute('event1_fail','event not in system: '.$event_id);
++      //The template registerTryAgainLater_1 contains a 
++      // message "An error has occurred with your account.  Please contact CTI Customer Service at 1-800-691-6008, option 1 for assistance."
++      $this->redirect('assisting/registerTryAgainLater_1');
+     }
+     
+ 
+@@ -255,7 +279,40 @@ class assistingActions extends sfActions
+     
+     return sfView::SUCCESS;
+   }
++  
++  public function executeRegisterTryAgainLater_1(sfWebRequest $request)
++  {
++    $this->diagnostics = $this->getUser()->getAttribute('event1_fail').' '. $this->getUser()->getAttribute('event2_fail').' '. $this->getUser()->getAttribute('event3_fail');
+ 
++    $register_log = '/tmp/portal_register.log';
++    $info = Date('Y-m-d H:i:s')." registerTryAgainLater_1 diagnostics: ".$this->diagnostics."\n";
++    file_put_contents($register_log,$info,FILE_APPEND);
++    
++    return sfView::SUCCESS;
++  }
++
++  public function executeRegisterTryAgainLater_2(sfWebRequest $request)
++  {
++    $this->diagnostics = $this->getUser()->getAttribute('event1_fail').' '. $this->getUser()->getAttribute('event2_fail').' '. $this->getUser()->getAttribute('event3_fail');
++
++    $register_log = '/tmp/portal_register.log';
++    $info = Date('Y-m-d H:i:s')." registerTryAgainLater_2 diagnostics: ".$this->diagnostics."\n";
++    file_put_contents($register_log,$info,FILE_APPEND);
++    
++    return sfView::SUCCESS;
++  }
++  
++  public function executeRegisterTryAgainLater_3(sfWebRequest $request)
++  {
++    $this->diagnostics = $this->getUser()->getAttribute('event1_fail').' '. $this->getUser()->getAttribute('event2_fail').' '. $this->getUser()->getAttribute('event3_fail');
++
++    $register_log = '/tmp/portal_register.log';
++    $info = Date('Y-m-d H:i:s')." registerTryAgainLater_3 diagnostics: ".$this->diagnostics."\n";
++    file_put_contents($register_log,$info,FILE_APPEND);
++    
++    return sfView::SUCCESS;
++  }
++  
+   public function executeWaitlistInfo(sfWebRequest $request)
+   {
+     return sfView::SUCCESS;

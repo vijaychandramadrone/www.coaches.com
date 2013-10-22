@@ -1,0 +1,14 @@
+waitlistInfoSuccess:
+  layout: bare
+
+registerInfoSuccess:
+  layout: bare
+
+eventInfoSuccess:
+  layout: bare
+
+registration1Success:
+  layout: layout-new-nav
+
+default:
+  layout: layout
