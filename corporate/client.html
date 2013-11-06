@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="ie9 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head><script>(function(_,e,rr,s){_errs=[s];var c=_.onerror;_.onerror=function(){var a=arguments;_errs.push(a);c&&c.apply(this,a)};var b=function(){var c=e.createElement(rr),b=e.getElementsByTagName(rr)[0];c.src="//beacon.errorception.com/"+s+".js";c.async=!0;b.parentNode.insertBefore(c,b)};_.addEventListener?_.addEventListener("load",b,!1):_.attachEvent("onload",b)}) (window,document,"script","521be34325609c1f79001116");</script>
+
+
+	<meta charset="utf-8">
+	<title>CTI - Coachee</title>
+	<link rel="stylesheet" media="all" href="_ui/css/main.css">
+    <link rel="stylesheet" media="all" href="_ui/css/jquery.browser.reject.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body class="no-js">
+
+<div class="container">
+	<header id="header">
+		<h1><img src="" alt="" class="logo" /><span class="client-name"></span> - <span>Coachee Dashboard</span></h1>
+
+		<nav>
+			<ul>
+				<li><span class="welcome"></span></li>
+				<li><a href="modal-timezone.html" title="Change Timezone" class="user-timezone"></a></li>
+				<li><a href="#" title="Logout">Logout</a></li>
+			</ul>
+		</nav>
+	</header><!-- / header -->
+
+	<aside class="sidebar wide">
+		<nav class="tabs left">
+			<h2>Coachee Profile</h2>
+			<a href="modal-coachee-faq.html" class="button medium faq" title="FAQ">FAQ</a>
+		</nav><!-- / tabs -->
+
+		<div class="wrapper profile">
+			<div id="profile-data">
+				<dl class="profile">
+					<div class="clearfix">
+						<dt>Name:</dt>
+						<dd class="name">_</dd>
+					</div>
+
+					<div class="clearfix">
+						<dt>Employer:</dt>
+						<dd class="employer">_</dd>
+					</div>
+<br />
+					<div class="clearfix">
+						<dt>Coach:</dt>
+						<dd class="coach">_</dd>
+                        <dd class="coach_email">_</dd>
+                        <dd class="coach_phone">_</dd>
+					</div>
+
+					<div class="clearfix description" >
+						<dt>Focus Area:</dt><br>
+						<dd class="focusarea">_</dd>
+					</div>
+
+					<div class="clearfix description" >
+						<dt>Success Metrics:</dt><br>
+						<dd class="metrics">_</dd>
+					</div>
+				</dl>
+			</div><!-- / profile-data -->
+
+			<h3 class="legend">Documents
+				<span class="legend"><img src="_ui/images/common/ico_requires_action.png" alt="Requires Action" width="16" height="16" />Requires Action</span>
+				<span class="legend"><img src="_ui/images/common/ico_complete.png" alt="Read Only" width="16" height="16" />Complete</span>
+				<span class="legend"><img src="_ui/images/common/ico_read_only.png" alt="Read Only" width="14" height="16" />Read Only</span>
+			</h3>
+
+            <script id="clientDocumentTemplateList" type="text/html">
+                <li class="item">
+                    <a href="modal-document-management.html" title="" class="title">_</a>
+                    <ul class="list-actions">
+                        <li><a href="#" target="_blank" title="Download" class="tooltip icon download">Download</a></li>
+                    </ul>
+                </li>
+            </script>
+			<ul class="styled-list documents">
+
+			</ul>
+		</div><!-- / wrapper -->
+	</aside><!-- / sidebar -->
+
+	<div class="content">
+		<div class="tabs right">
+			<h2>Sessions</h2>
+			<!-- <a href="#" target="_blank" class="button medium schedule" title="Schedule New Session">Schedule New Session</a> -->
+		</div><!-- / tabs -->
+
+		<div class="wrapper">
+			<ul class="lists-select tabs">
+				<li class="active"><a href="#progress-notes" title="Progress Report">Progress Notes</a></li>
+				<li><a href="#confidential-notes" title="Personal Notes" class="active">Personal Notes</a></li>
+			</ul>
+
+			<div>
+				<div id="progress-notes">
+                    <script id="progressNotesTemplate" type="text/html">
+                        <li>
+                        <h4>
+                            <span class="date">_</span>
+                            <a href="#" class="icon" title="Edit">_</a>
+                        </h4>
+                        <div class="note-content"></div>
+                        <div class="note-actions">
+                            <a href="modal-confirm.html" title="Approve" class="button medium approve-note">Approve</a>
+                        </div>
+                    </li>
+                    </script>
+					<ul class="notes-list">
+
+					</ul>
+				</div>
+				<div id="confidential-notes">
+                    <script id="confidentialNotesTemplate" type="text/html">
+                        <li>
+                            <h4>
+                                <span class="date"></span>
+                                <a href="#" class="icon edit" title="Edit">_</a>
+                            </h4>
+                            <div class="note-content"><p class="editable">_</p></div>
+                        </li>
+                    </script>
+					<ul class="notes-list">
+
+					</ul>
+				</div>
+			</div>
+		</div><!-- / wrapper -->
+	</div><!-- / content -->
+
+	<footer id="footer" class="clearfix">
+		<p>Copyright &copy; The Coaches Training Institute. All rights reserved.</p>
+		<a href="#" title="co-active"><img src="_media/images/common/logo_cti.png" alt="co-active Logo" width="145" height="27" /></a>
+	</footer><!-- / footer -->
+</div><!-- / container -->
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>window.jQuery || document.write("<script src='_ui/js/jquery-1.7.2.min.js'>\x3C/script>")</script>
+<script src="_ui/js/jquery.xdr.min.js"></script>
+<script src="_ui/js/cookie.min.js"></script>
+<script src="_ui/js/jquery.fixheadertable.min.js"></script>
+<script src="_ui/js/jquery.placeholder.min.js"></script>
+<script src="_ui/js/jquery.dropkick.min.js"></script>
+<script src="_ui/js/jquery.qtip.min.js"></script>
+<script src="_ui/js/jquery.jeditable.min.js"></script>
+<script src="_ui/js/jquery.fileinput.min.js"></script>
+<script src="_ui/js/jquery-ui.min.js"></script>
+<script src="_ui/js/jquery.ui.timepicker.js"></script>
+<script src="_ui/js/jquery.browser.reject.js"></script>
+</script><script src="_ui/js/fileuploader.js"></script>
+<script src="_ui/js/getdata.js"></script>
+<script src="_ui/js/pure.min.js"></script>
+<script src="_ui/js/main.js"></script>
+</body>
+</html>

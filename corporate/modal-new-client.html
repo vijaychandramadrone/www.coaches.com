@@ -1,0 +1,63 @@
+<div id="modal-new-client">
+    <h1>New Coachee</h1>
+
+    <div class="overlay-content clearfix">
+        <form action="">
+            <div class="form-content">
+                <fieldset>
+                    <div>
+                        <input type="text" name="new-client-firstname" id="new-client-firstname" title="First Name" placeholder="First Name" />
+                        <input type="text" name="new-client-lastname" id="new-client-lastname" title="Last Name" placeholder="Last Name" />
+                    </div>
+
+                    <input type="email" name="new-client-email" id="new-client-email" title="Email" placeholder="Email" />
+
+                    <div class="new-client-coach">
+                        <select name="new-client-coach" title="Coach" id="new-client-coach">
+                            <option>_</option>
+                        </select>
+                        <input type="text" name="new-client-date" class="datepicker" title="Start Date" id="new-client-date" placeholder="Start Date" />
+                    </div>
+
+                    <div class="new-client-sessions">
+                        <input type="text" name="new-client-sessions" title="# of Sessions" id="new-client-sessions" placeholder="# of Sessions" />
+                        <select name="new-client-frequency" title="Session Frequency" id="new-client-frequency">
+                            <option value="">Frequency</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="EveryOtherWeek">Every other week</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="TwiceAMonth">Twice a month</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <input type="text" name="new-client-other" title="If other, specify..." id="new-client-other" placeholder="If other, specify...." />
+
+                    </div>
+
+                    <input type="text" name="new-client-level" style="width: 282px;" id="new-client-level" title="Title / Level" placeholder="Title / Level" />
+
+                    <div style="display: block">
+                        <input type="text" name="new-client-billrate" style="width: 49%; float: left;" id="new-client-billrate" title="Rate billed org ($/hr)" placeholder="Rate billed org ($/hr)" />
+                        <input type="text" name="new-client-payrate" style="width: 49%; float: right;" id="new-client-payrate" placeholder="Pay to Coach ($/hr)" title="Pay to Coach ($/hr)" value="" />
+                    </div>
+
+                    <input type="text" name="new-client-tags"  id="new-client-tags" title="Tags (separate with commas)" placeholder="Tags (separate with commas)" />
+
+
+                    <textarea name="new-client-focus" id="new-client-focus" title="Focus Area" placeholder="Focus Area"></textarea>
+                    <textarea name="new-client-success" id="new-client-success" title="Success Metrics" placeholder="Success Metrics"></textarea>
+                </fieldset>
+            </div><!-- /form-content -->
+
+            <div class="form-actions">
+                <input type="button" name="new-client-add" class="new-client-add button large" value="Save" data-send="false" data-notify="false" />
+                <input type="button" name="new-client-add" class="new-client-add button large" value="Save &amp; Send Invite" data-send="true" data-notify="false" />
+                <input type="button" name="new-client-add" class="new-client-add button large" value="Save &amp; Send Coach/Client Notification" data-send="false" data-notify="true" />
+
+                <input type="button" name="new-client-cancel" class="button large" id="new-client-cancel" value="Cancel" />
+            </div><!-- /form-actions -->
+        </form>
+
+        <span class="overlay-close">Close</span>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<html><head>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="_ui/js/jquery-ui.min.js"></script>
+    <script>
+        var sessionLockDay = 2;
+    function isLocked(sessionDate) {
+        //prevent editing of locked sessions.
+
+        var today = new Date();
+        var month = today.getMonth();
+        var year = today.getYear();
+        if (today.getYear() < 1000){
+            year = year + 1900;
+        }
+
+        var sessionYear = sessionDate.getYear();
+        if (sessionDate.getYear() < 1000){
+            sessionYear = sessionYear + 1900;
+        }
+
+        if (today.getDate()<sessionLockDay) month--; //if it is the first of the month, last month is still open.
+        if (month < 0) {
+            month += 12;
+            year--;
+        }
+
+        var iL = ((sessionDate.getMonth() < month &&  sessionYear == year) || sessionYear < year);
+        document.write("----- " + sessionDate.toString() + ": " + sessionDate.getMonth() + "-" + month + "|||" + sessionYear + "-" + year + "|||" + iL.toString() + "<BR>");
+
+        return iL;
+    }
+
+    $(document).ready(function() {
+
+        var dates = Array("09-01-13","08-14-13","09-14-13","09-14-12","06-14-14","09-30-13","08-31-13");
+        var answers = Array(false,true, false,true,false, false,true);
+
+        for (var i = 0;i<dates.length; i++) {
+            var check = isLocked($.datepicker.parseDate('mm-dd-yy',dates[i]));
+            if (check!=answers[i]) document.write("<HR>Error with: " + dates[i] + "(" + check + ")<hr>");
+        }
+        document.write("Test Complete");
+    });
+</script></head>
+<body >
+Ok.
+</body></html>

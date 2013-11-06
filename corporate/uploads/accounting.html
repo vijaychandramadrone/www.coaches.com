@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>CTI - Accounting Admin</title>
+	<link rel="stylesheet" media="all" href="_ui/css/main.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body class="no-js">
+
+<div class="container">
+	<header id="header">
+		<h1>Accounting Admin Dashboard</h1>
+
+		<nav>
+			<ul>
+				<li><span class="welcome"></span></li>
+				<li><a href="#" title="Logout">Logout</a></li>
+			</ul>
+		</nav>
+	</header><!-- / header -->
+
+	<div class="content wide">
+		<nav class="tabs right">
+			<h2>Sessions</h2>
+			
+
+			<a href="#" target="_blank" class="button tooltip fixed" id="download-report" title="Download Report"><img src="_ui/images/common/ico_download.png" alt="Download" width="14" height="18" /></a>
+			
+			<ul class="tabs options">
+				<li class="active"><a href="#all" id="all-count">All<span>_</span></a></li>
+				<li><a href="#done" id="done-count">Complete<span>_</span></a></li>
+				<li><a href="#noshows" id="noshows-count">No-Shows<span>_</span></a></li>
+				<li><a href="#canceled" id="canceled-count">Canceled<span>_</span></a></li>
+
+			</ul>
+
+			<div class="tags">
+				<a href="" class="button fixed tooltip" title="Tags"><img src="_ui/images/common/ico_tags.png" alt="Tags" width="22" height="18" /></a>
+
+				<div>
+					<form action="">
+						<fieldset>
+							<input type="text" placeholder="Executive" id="tags"/>
+
+							<input type="button" value="Filter" id="filter-sessions">
+						</fieldset>
+					</form>
+				</div>
+			</div>
+
+			<fieldset class="filters">
+				<label>
+					<span>From:</span>
+					<input type="text" name="Date From" id="date-from" class="datepicker" />
+				</label>
+
+				<label>
+					<span>To:</span>
+					<input type="text" name="Date To" id="date-to" class="datepicker" />
+				</label>
+
+				<div class="select-wrapper">
+					<select name="companies" id="companies-list">
+						<option>_</option>
+					</select>
+				</div>
+			</fieldset>
+		</nav><!-- / tabs -->
+
+		<div class="wrapper">
+			<div class="table-wrapper summary" id="all">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+							<th><span>Fee ($)</span></th>
+							<th><span>Expense ($)</span></th>
+							<th><span>Net ($)</span></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td class="client">_</td>
+							<td class="coach">_</td>
+							<td class="date">_</td>
+							<td class="time">_</td>
+							<td class="status-static">_</td>
+							<td class="fee">_</td>
+							<td class="expense">_</td>
+							<td class="net">_</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="table-summary">
+					<ul>
+						<li class="fee">_</li>
+						<li class="expense">_</li>
+						<li class="net">_</li>
+					</ul>
+				</div>
+			</div><!-- / sessions -->
+
+			<div class="table-wrapper summary" id="done">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+							<th><span>Fee ($)</span></th>
+							<th><span>Expense ($)</span></th>
+							<th><span>Net ($)</span></th>
+						</tr>
+					</thead>
+
+					<tbody></tbody>
+				</table>
+
+				<div class="table-summary">
+					<ul>
+						<li class="fee">_</li>
+						<li class="expense">_</li>
+						<li class="net">_</li>
+					</ul>
+				</div>
+			</div><!-- / sessions -->
+
+			<div class="table-wrapper summary" id="noshows">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+							<th><span>Fee ($)</span></th>
+							<th><span>Expense ($)</span></th>
+							<th><span>Net ($)</span></th>
+						</tr>
+					</thead>
+
+					<tbody></tbody>
+				</table>
+
+				<div class="table-summary">
+					<ul>
+						<li class="fee">_</li>
+						<li class="expense">_</li>
+						<li class="net">_</li>
+					</ul>
+				</div>
+			</div><!-- / sessions -->
+
+
+			<div class="table-wrapper summary" id="canceled">
+
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+							<th><span>Fee ($)</span></th>
+							<th><span>Expense ($)</span></th>
+							<th><span>Net ($)</span></th>
+						</tr>
+					</thead>
+
+					<tbody></tbody>
+				</table>
+
+				<div class="table-summary">
+					<ul>
+						<li class="fee">_</li>
+						<li class="expense">_</li>
+						<li class="net">_</li>
+					</ul>
+				</div>
+
+			</div>
+
+
+			<table class="template">
+				<thead>
+					<tr>
+						<th><span>Client</span></th>
+						<th><span>Coach</span></th>
+						<th><span>Date</span></th>
+						<th><span>Time</span></th>
+						<th><span>Status</span></th>
+						<th><span>Fee ($)</span></th>
+						<th><span>Expense ($)</span></th>
+						<th><span>Net ($)</span></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td class="client">_</td>
+						<td class="coach">_</td>
+						<td class="date">_</td>
+						<td class="time">_</td>
+						<td class="status-static">_</td>
+						<td class="light fee">_</td>
+						<td class="dark expense">_</td>
+						<td class="light net">_</td>
+					</tr>
+				</tbody>
+			</table>
+		</div><!-- / wrapper -->
+	</div><!-- / content -->
+
+	<footer id="footer" class="clearfix">
+		<p>Copyright &copy; The Coaches Training Institute. All rights reserved.</p>
+		<a href="#" title="co-active"><img src="_media/images/common/logo_cti.png" alt="co-active Logo" width="145" height="27" /></a>
+	</footer><!-- / footer -->
+</div><!-- / container -->
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>window.jQuery || document.write("<script src='_ui/js/jquery-1.7.2.min.js'>\x3C/script>")</script>
+<script src="_ui/js/jquery.xdr.min.js"></script>
+<script src="_ui/js/cookie.min.js"></script>
+<script src="_ui/js/jquery.fixheadertable.min.js"></script>
+<script src="_ui/js/jquery.placeholder.min.js"></script>
+<script src="_ui/js/jquery.dropkick.min.js"></script>
+<script src="_ui/js/jquery.qtip.min.js"></script>
+<script src="_ui/js/jquery.jeditable.min.js"></script>
+<script src="_ui/js/jquery.fileinput.min.js"></script>
+<script src="_ui/js/jquery-ui.min.js"></script>
+<script src="_ui/js/getdata.js"></script>
+<script src="_ui/js/pure.min.js"></script>
+<script src="_ui/js/main.js"></script>
+</body>
+</html>
