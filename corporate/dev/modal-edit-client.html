@@ -1,0 +1,56 @@
+<div id="modal-new-client">
+	<h1>Edit Client</h1>
+
+	<div class="overlay-content clearfix">
+		<form action="">
+			<div class="form-content">
+				<fieldset>
+					<div>
+						<input type="text" name="new-client-firstname" title="First Name" id="new-client-firstname" placeholder="First Name" title="First Name" />
+						<input type="text" name="new-client-lastname" title="Last Name" id="new-client-lastname" placeholder="Last Name" title="Last Name" />
+					</div>
+
+					<input type="email" name="new-client-email" title="Email" id="new-client-email" placeholder="Email" />
+
+					<div class="new-client-coach">
+						<select name="new-client-coach" id="new-client-coach">
+							<option>_</option>
+						</select>
+						<input type="text" title="Start Date" name="new-client-date" class="datepicker" id="new-client-date" placeholder="Start Date" />
+					</div>
+
+					<div class="new-client-sessions">
+						<input type="text" name="new-client-sessions" title="# of Sessions" id="new-client-sessions" placeholder="# of Sessions" />
+						<select name="new-client-frequency" id="new-client-frequency">
+                            <option value="">Frequency</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="EveryOtherWeek">Every other week</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="TwiceAMonth">Twice a month</option>
+                            <option value="Other">Other</option>
+						</select>
+						<input type="text" name="new-client-other" title="If other, specify..." id="new-client-other" placeholder="If other, specify..." />
+					</div>
+
+					<div class="new-client-level">
+						<input type="text" name="new-client-level" title="Title / Level" style="width: 282px;" id="new-client-level" placeholder="Title / Level" />
+                        <input type="text" name="new-client-billrate" title="Bill Rate ($/hr)" style="width: 92px; margin-right: 0px;" id="new-client-billrate" placeholder="Bill Rate ($/hr)" />
+					</div>
+
+                    <input type="text" name="new-client-tags" title="Tags (separate with commas)" id="new-client-tags" placeholder="Tags (separate with commas)" />
+
+					<textarea name="new-client-focus" id="new-client-focus" title="Focus Area" placeholder="Focus Area"></textarea>
+					<textarea name="new-client-success" id="new-client-success" title="Success Metrics" placeholder="Success Metrics"></textarea>
+				</fieldset>
+			</div><!-- /form-content -->
+
+			<div class="form-actions">
+                <input type="button" name="new-client-edit" class="new-client-edit button large" value="Save" data-send="false" />
+                <input type="button" name="new-client-edit" class="new-client-edit button large" value="Save and Send Invite" data-send="true" />
+				<input type="button" name="new-client-cancel" class="button large" id="new-client-cancel" value="Cancel" />
+			</div><!-- /form-actions -->
+		</form>
+
+		<span class="overlay-close">Close</span>
+	</div>
+</div>

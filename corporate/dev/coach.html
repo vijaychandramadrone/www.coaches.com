@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>CTI - Coach</title>
+	<link rel="stylesheet" media="all" href="_ui/css/main.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body class="no-js">
+
+<div class="container">
+	<header id="header">
+		<h1>CTI Coach Dashboard</h1>
+
+		<nav>
+			<ul>
+				<li><span class="welcome"></span></li>
+				<li><a href="modal-timezone.html" title="Change Timezone" class="user-timezone"></a></li>
+				<li><a href="modal-coach-profile.html" title="Profile" class="profile-edit">Profile</a></li>
+				<li><a href="#" title="Logout">Logout</a></li>
+			</ul>
+		</nav>
+	</header><!-- / header -->
+
+	<div class="content wide">
+		<nav class="tabs right">
+			<h2>Sessions</h2>
+			<a href="modal-new-session.html" class="button tooltip fixed new-session" title="Add Completed Session"><img src="_ui/images/common/ico_add.png" alt="Add" width="10" height="10" /></a>
+			<a href="modal-clients.html" class="button medium show-clients" title="View Clients">View Clients</a>
+		</nav><!-- / tabs -->
+
+		<div class="wrapper">
+			<div class="sessions table-wrapper">
+				<table>
+					<colgroup>
+						<col/>
+						<col/>
+						<col/>
+						<col/>
+						<col/>
+					</colgroup>
+
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Client Organization</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td><a href="modal-clients.html" class="client">_</a></td>
+							<td class="organization">_</td>
+							<td class="date">_</td>
+							<td class="time">_</td>
+							<td>
+								<span class="status">_</span>
+								<a href="modal-confirm.html" title="Delete" class="tooltip icon delete delete-session">Delete</a>
+								<a href="modal-edit-session.html" title="Edit" class="tooltip icon show edit-session">Edit</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!-- / sessions -->
+		</div><!-- / wrapper -->
+	</div><!-- / content -->
+
+	<footer id="footer" class="clearfix">
+		<p>Copyright &copy; The Coaches Training Institute. All rights reserved.</p>
+		<a href="#" title="co-active"><img src="_media/images/common/logo_cti.png" alt="co-active Logo" width="145" height="27" /></a>
+	</footer><!-- / footer -->
+</div><!-- / container -->
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>window.jQuery || document.write("<script src='_ui/js/jquery-1.7.2.min.js'>\x3C/script>")</script>
+<script src="_ui/js/jquery.xdr.min.js"></script>
+<script src="_ui/js/cookie.min.js"></script>
+<script src="_ui/js/jquery.fixheadertable.min.js"></script>
+<script src="_ui/js/jquery.placeholder.min.js"></script>
+<script src="_ui/js/jquery.dropkick.min.js"></script>
+<script src="_ui/js/jquery.qtip.min.js"></script>
+<script src="_ui/js/jquery.jeditable.min.js"></script>
+<script src="_ui/js/jquery.fileinput.min.js"></script>
+<script src="_ui/js/jquery-ui.min.js"></script>
+<script src="_ui/js/jquery.ui.timepicker.js"></script>
+<script src="_ui/js/getdata.js"></script>
+<script src="_ui/js/pure.min.js"></script>
+<script src="_ui/js/main.js"></script>
+</body>
+</html>

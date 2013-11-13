@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>CTI - Organization</title>
+	<link rel="stylesheet" media="all" href="_ui/css/main.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body class="no-js organization">
+
+<div class="container">
+	<header id="header">
+		<h1><img src="" alt="" class="logo" /><span class="company-name"></span> - <span>Management Dashboard</span></h1>
+
+		<nav>
+			<ul>
+				<li><span class="welcome"></span></li>
+				<li><a href="modal-timezone.html" title="Change Timezone" class="user-timezone"></a></li>
+				<li><a href="#" title="Logout">Logout</a></li>
+			</ul>
+		</nav>
+	</header><!-- / header -->
+
+	<aside class="sidebar">
+		<nav class="tabs left">
+			<ul>
+				<li class="active"><a href="#metric-side">Metrics</a></li>
+				<li><a href="#clients-side">Clients</a></li>
+				<li><a href="#coaches-side">Coaches</a></li>
+			</ul>
+		</nav><!-- / tabs -->
+
+		<div class="wrapper">
+			<div id="metric-side">
+				<div id="metric-data">
+					<h3>Active Network</h3>
+					<dl class="dl-box active-network">
+						<dt>Clients</dt>
+						<dd><a href="modal-clients.html" id="clients-count">_</a></dd>
+
+						<dt>Coaches</dt>
+						<dd><a href="modal-coaches.html" id="coaches-count">_</a></dd>
+					</dl>
+
+					<h3>Budget</h3>
+					<dl class="dl-box budget">
+						<dt>Total Allocated</dt>
+						<dd id="budget-total"><span>_</span></dd>
+
+						<dt>Total Used</dt>
+						<dd id="budget-used"><span>_</span></dd>
+
+						<dt><strong>Remaining Balance</strong></dt>
+						<dd id="budget-remaining"><strong>_</strong></dd>
+					</dl>
+
+					<h3>Employee Progress</h3>
+					<dl class="dl-box empleyee-progress">
+						<dt>Assigned a Coach</dt>
+						<dd id="progress-selected">_</dd>
+
+						<dt>Completed First Session</dt>
+						<dd id="progress-first">_</dd>
+
+						<dt>Completed 1/2 of Sessions</dt>
+						<dd id="progress-half">_</dd>
+
+						<dt>Completed all Sessions</dt>
+						<dd id="progress-all">_</dd>
+					</dl>
+				</div><!-- / metric-data -->
+
+				<h3 class="legend">Documents
+					<span class="legend"><img src="_ui/images/common/ico_requires_action.png" alt="Requires Action" width="16" height="16" />Requires Action</span>
+					<span class="legend"><img src="_ui/images/common/ico_read_only.png" alt="Read Only" width="14" height="16" />Read Only</span>
+				</h3>
+
+				<ul class="styled-list documents">
+					<li class="item"><a href="" class="title" title="" target="_blank">_</a></li>
+				</ul>
+			</div><!-- / metric-side -->
+
+			<div id="clients-side">
+				<!-- <a href="modal-new-client.html" class="button tooltip fixed new-client" title="Add Client"><img src="_ui/images/common/ico_add.png" alt="Add" width="10" height="10" /></a> -->
+				
+				<h3>All Clients</h3>
+
+				<ul class="styled-list clients zebra">
+					<li class="item">
+						<a href="modal-clients.html" class="title" title="">_</a>
+						<!-- <ul class="list-actions">
+							<li><a href="modal-edit-client.html" title="Edit" class="tooltip icon edit">Edit</a></li>
+						</ul> -->
+					</li>
+				</ul>
+			</div><!-- / clients-side -->
+
+			<div id="coaches-side">
+				<h3>All Coaches</h3>
+
+				<ul class="styled-list coaches zebra">
+					<li class="item"><a href="modal-coaches.html" class="title" title="">_</a></li>
+				</ul>
+			</div><!-- / coaches-side -->
+		</div><!-- / wrapper -->
+	</aside><!-- / sidebar -->
+
+	<div class="content narrow">
+		<nav class="tabs right">
+			<h2>Sessions</h2>
+			<ul>
+				<li class="active"><a href="#all" id="all-count">All<span>0</span></a></li>
+				<li><a href="#done" id="done-count">Complete<span>0</span></a></li>
+				<li><a href="#noshows" id="noshows-count">No-Shows<span>0</span></a></li>
+				<li><a href="#canceled" id="canceled-count">Canceled<span>0</span></a></li>
+			</ul>
+		</nav><!-- / tabs -->
+
+		<div class="wrapper sessions">
+			<div class="table-wrapper" id="all">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td class="client">_</a></td>
+							<td class="coach">_</a></td>
+							<td class="date">_</td>
+							<td class="time">_</td>
+							<td class="status-static"><span>_</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!-- / table-all -->
+
+			<div class="table-wrapper" id="done">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+						</tr>
+					</thead>
+
+					<tbody></tbody>
+				</table>
+			</div><!-- / table-done -->
+
+			<div class="table-wrapper" id="noshows">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+						</tr>
+					</thead>
+
+					<tbody></tbody>
+				</table>
+			</div><!-- / table-noshows -->
+
+			<div class="table-wrapper" id="canceled">
+				<table>
+					<thead>
+						<tr>
+							<th><span>Client</span></th>
+							<th><span>Coach</span></th>
+							<th><span>Date</span></th>
+							<th><span>Time</span></th>
+							<th><span>Status</span></th>
+						</tr>
+					</thead>
+
+					<tbody></tbody>
+				</table>
+			</div><!-- / table-canceled -->
+
+			<table>
+				<tr class="template">
+					<td class="session-client"><a href="modal-clients.html" class="lightbox">ABaines, Lorreine</a></td>
+					<td class="session-coach"><a href="modal-coaches.html" class="lightbox">Stover, Jeremy</a></td>
+					<td class="session-date">4/5/12</td>
+					<td class="session-time">12:00pm - 1:00pm</td>
+					<td class="session-status">Canceled</td>
+				</tr>
+			</table>
+		</div><!-- / wrapper -->
+	</div><!-- / content -->
+
+	<footer id="footer" class="clearfix">
+		<p>Copyright &copy; The Coaches Training Institute. All rights reserved.</p>
+		<a href="#" title="co-active"><img src="_media/images/common/logo_cti.png" alt="co-active Logo" width="145" height="27" /></a>
+	</footer><!-- / footer -->
+</div><!-- / container -->
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>window.jQuery || document.write("<script src='_ui/js/jquery-1.7.2.min.js'>\x3C/script>")</script>
+<script src="_ui/js/jquery.xdr.min.js"></script>
+<script src="_ui/js/cookie.min.js"></script>
+<script src="_ui/js/jquery.fixheadertable.min.js"></script>
+<script src="_ui/js/jquery.placeholder.min.js"></script>
+<script src="_ui/js/jquery.dropkick.min.js"></script>
+<script src="_ui/js/jquery.qtip.min.js"></script>
+<script src="_ui/js/jquery.jeditable.min.js"></script>
+<script src="_ui/js/jquery.fileinput.min.js"></script>
+<script src="_ui/js/jquery-ui.min.js"></script>
+<script src="_ui/js/jquery.ui.timepicker.js"></script>
+<script src="_ui/js/getdata.js"></script>
+<script src="_ui/js/pure.min.js"></script>
+<script src="_ui/js/main.js"></script>
+</body>
+</html>

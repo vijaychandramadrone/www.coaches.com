@@ -1,0 +1,102 @@
+<div id="modal-new-organization">
+	<h1>Edit Organization</h1>
+
+	<div class="overlay-content clearfix">
+		<form action="">
+			<div class="form-content">
+				<div class="overflow">
+					<fieldset>
+						<input type="text" name="new-organization-name" id="new-organization-name" placeholder="Organization Name" title="Organization Name" />
+						<input type="text" name="new-organization-street" id="new-organization-street" placeholder="Street Address" title="Street Address" />
+
+						<div>
+							<input type="text" name="new-organization-city" id="new-organization-city" placeholder="City" title="City" />
+							<select name="new-organization-state" id="new-organization-state">
+							    <option value="AL">AL</option>
+							    <option value="AK">AK</option>
+							    <option value="AZ">AZ</option>
+							    <option value="AR">AR</option>    
+							    <option value="CA">CA</option>    
+							    <option value="CO">CO</option>    
+							    <option value="CT">CT</option>    
+							    <option value="DE">DE</option>    
+							    <option value="DC">DC</option>    
+							    <option value="FL">FL</option>    
+							    <option value="GA">GA</option>    
+							    <option value="HI">HI</option>    
+							    <option value="ID">ID</option>    
+							    <option value="IL">IL</option>    
+							    <option value="IN">IN</option>    
+							    <option value="IA">IA</option>    
+							    <option value="KS">KS</option>    
+							    <option value="KY">KY</option>    
+							    <option value="LA">LA</option>    
+							    <option value="ME">ME</option>
+							    <option value="MD">MD</option>
+							    <option value="MA">MA</option>
+							    <option value="MI">MI</option>
+							    <option value="MN">MN</option>
+							    <option value="MS">MS</option>
+							    <option value="MO">MO</option>
+							    <option value="MT">MT</option>
+							    <option value="NE">NE</option>    
+							    <option value="NV">NV</option>    
+							    <option value="NH">NH</option>    
+							    <option value="NJ">NJ</option>    
+							    <option value="NM">NM</option>
+							    <option value="NY">NY</option>    
+							    <option value="NC">NC</option>
+							    <option value="ND">ND</option>
+							    <option value="OH">OH</option>    
+							    <option value="OK">OK</option>
+							    <option value="OR">OR</option>
+							    <option value="PA">PA</option>
+							    <option value="RI">RI</option>
+							    <option value="SC">SC</option>
+							    <option value="SD">SD</option>
+							    <option value="TN">TN</option>
+							    <option value="TX">TX</option>
+							    <option value="UT">UT</option>
+							    <option value="VT">VT</option>    
+							    <option value="VA">VA</option>
+							    <option value="WA">WA</option>    
+							    <option value="WV">WV</option>    
+							    <option value="WI">WI</option>
+							    <option value="WY">WY</option>
+							</select>
+							<input type="text" name="new-organization-zip" id="new-organization-zip" placeholder="Zip" title="Zip" />
+						</div>
+
+						<textarea name="new-organization-info" id="new-organization-info" placeholder="General info ..." title="General info ..."></textarea>
+
+						<div class="new-organization-budget">
+							<span>$</span><input type="text" name="new-organization-budget" id="new-organization-budget" placeholder="Budget" title="Budget" />
+						</div>
+
+						<div id="logo-upload"></div>
+
+						<h3>Sponsor Info:</h3>
+
+						<div>
+							<input type="text" name="new-organization-firstname" id="new-organization-firstname" placeholder="First Name" title="First Name" />
+							<input type="text" name="new-organization-lastname" id="new-organization-lastname" placeholder="Last Name" title="Last Name" />
+						</div>
+						
+						<div>
+							<input type="email" name="new-organization-email" id="new-organization-email" placeholder="Email" title="Email" />
+							<input type="tel" name="new-organization-phone" id="new-organization-phone" placeholder="Phone" title="Phone" />
+						</div>
+					</fieldset>
+				</div>
+			</div><!-- /form-content -->
+
+			<div class="form-actions">
+				<input type="button" name="new-organization-edit" class="new-organization-edit button large" value="Save" data-send="false" />
+				<input type="button" name="new-organization-edit" class="new-organization-edit button large" value="Save and Send Invite" data-send="true" />
+				<input type="button" name="new-organization-cancel" class="button large" id="new-organization-cancel" value="Cancel" />
+			</div><!-- /form-actions -->
+		</form>
+
+		<span class="overlay-close">Close</span>
+	</div>
+</div>

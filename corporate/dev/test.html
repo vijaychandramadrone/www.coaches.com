@@ -1,0 +1,484 @@
+<!doctype html>
+<head>
+</head>
+<body>
+
+
+<select id="users" accesskey="">
+    <option value="poorni@thecoaches.com" selected>Account Administrator</option>
+    <option value="hr@nike.com">Org Sponsor</option>
+    <option value="jeremy@connectedadvantage.com">Coach</option>
+    <option value="client@nike.com">Client</option>
+    <option value="ellen@thecoaches.com">Accounting</option>
+    <option value="invalid@thecoaches.com">Invalid</option>
+</select>
+
+<input type="button" onclick="doLogin()" value="Login" />
+
+<input type="button" id="dataButton" disabled onclick="javascript: loadData();" value="Get Data" />
+<input type="button" onclick="testAllMethods()" value="Test Methods" />
+<input type="button" onclick="doLogout()" value="Logout" />
+
+</br>
+
+<div id="add_client_div" style="display: none;">
+    <hr><h1>Add Client (logged in as Acct Mgr)</h1>
+    First: <input type="text" name="first" id="add_first" value="new" /><br>
+    Last: <input type="text" name="last" id="add_last" value="client" /><br>
+    Email: <input type="text" name="email" id="add_email"  /><br>
+    Coach: jeremy@connectedadvantage.com <input type="hidden" name="coach" value="1" id="add_coach"/><br>
+    Sessions Allotted: <input type="text" name="sessions" value="16" id="add_sessions"/><br>
+    Frequency: <input type="text" name="frequency" value="3 times per month" id="add_frequency"/><br>
+    Start Date: <input type="text" value="2012-06-01" id="add_start"/><br>
+    Tags: <input type="text"  value="divisionA" id="add_tags"/><br>
+    Level: <input type="text"  value="VP" id="add_level"/><br>
+    Organization Id: <input type="text"  value="1" id="add_org_id"/><br>
+    Focus Area: <textarea  name="focus" id="add_focus">This is my focus.</textarea><input type="button" id="updateButton" disabled onclick="javascript: doUpdate();" value="Update Focus Area" /><br>
+    <input type="hidden"  value="" id="update_client_id"/>
+    Success Metrics: <textarea  name="success" id="add_success">This is my success.</textarea><br>
+
+<input type="button" onclick="doAdd()" value="Add Client" /> <input type="button" id="deleteButton" disabled onclick="doDelete()" value="Delete Client" />
+    <hr /><h1>Link Coach to Organization</h1>
+    Coach Id: <input type="text" id="lnk_coach_id" value="1"><br>
+    Org Id: <input type="text" id="lnk_organization_id" value="1"><br>
+
+    <input type="button" value="Link" onclick="doLink()"><input type="button" value="Unlink" onclick="doUnLink()">
+
+    <hr />
+    <form action="http://www.thecoaches.com/corporate/api/upload" enctype="multipart/form-data" method="post" target="upload_target" onsubmit="alert($('#sessionId1').val()); return true;">
+        <h1>Upload Document Template</h1>
+        Read only: <input type="checkbox" name="readonly" value="1" /><br>
+        Confidential: <input type="checkbox" value="1" name="confidential" /><br>
+        <input type="hidden" id="sessionId1" name="session_id" value="" />
+        Document: <input type="file" name="document" >
+        <input type="submit" value="Upload" />
+    </form>
+</div>
+<div id="add_session_div" style="display: none;">
+    <hr><h1>Add Session (logged in as coach)</h1>
+    Client Id: <input type="text"  id="addS_client_id" value="1" /><br>
+    Date: <input type="text" id="addS_date" value="2012-06-12 15:00:00 " /><br>
+    Duration: <input type="text"  value="40" id="addS_duration"/> (in minutes)<br>
+    Status Code: <input type="text"  value="1" id="addS_status"/><br>
+    Personal Notes: <textarea   id="addS_confidential">This note is confidential.</textarea><input type="button" id="updateSessionButton" disabled onclick="javascript: doUpdateSession();" value="Update Note" /><br>
+    Progress Notes: <textarea  id="addS_progress">This is my success.</textarea><input type="button" id="updateSessionApproveButton" disabled onclick="javascript: doApproveProgress();" value="Approve Note" /><br>
+    <input type="hidden" id="update_session_id" />
+    <input type="button" onclick="doAddSession()" value="Add Session" />
+    <hr />
+    <form action="http://www.thecoaches.com/corporate/api/upload" enctype="multipart/form-data" method="post" target="upload_target" onsubmit="alert($('#sessionId2').val()); return true;">
+    <h1>Upload Document</h1>
+    Client Id: <input type="text"  name="client_id" value="1" /><br>
+    Document Template Id: <input type="text"  name="document_id" value="1" /><br>
+    Document: <input type="file" name="document" id="document">
+        <input type="hidden" id="sessionId2" name="session_id" value="" />
+    <input type="submit" value="Upload" />
+    </form>
+    <iframe id="upload_target" name="upload_target" src="" style="width:0px;height:0px;border:0px solid #ccc; display: none;" onload="javascript: uploadDone()"></iframe>
+</div>
+<div id="accounting_div" style="display: none;">
+<hr /><h1>Accounting Report</h1>
+    Start Date: <input type="text" id="report_start_date" value="2012-01-01" /><br>
+    End Date: <input type="text" id="report_end_date" value="2012-06-18" /><br>
+    Org Id: <input type="text"  id="report_organization_id" value="2" /><br>
+    Tags: <input type="text"  id="report_tags" value="" /><br>
+    <input type="button" onclick="doReport()" value="Run Report" />
+</div>
+<hr />
+
+<div accesskey="">
+    <hr/><h1>Valums Upload</h1>
+    <div id="file-uploader">
+        <noscript>
+            <p>Please enable JavaScript to use file uploader.</p>
+            <!-- or put a simple form for upload here -->
+        </noscript>
+    </div>
+
+
+    <div accesskey="">
+        <hr/><h1>Update Timezone</h1>
+
+        <input type="button" value="Update TZ to 4" onclick="doUpdateTimezone()">
+
+     </div>
+
+</div>
+
+<div id="dataArea" style="border: 1px solid black; margin: 20px; padding: 10px;"></div>
+
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="_ui/js/getdata.js" ></script>
+<script src="_ui/js/fileuploader.js" ></script>
+  <script>
+      var table;
+      $("#add_email").val('new' + Math.floor((Math.random()*10000)+1) + "@nike.com");
+
+      function doLogin() {
+          var un = $("#users option:selected").val();
+         console.log("Logging in as " + un);
+          $("#dataArea").text("Logging in...");
+          var pw = hex_sha512("testpassword");
+          console.log("logging in: " + un + ";" + pw);
+          login(un, pw, function(success,data) {
+              console.log(data);
+              $("#dataArea").text(JSON.stringify(data));
+              console.log("d: " + data);
+              console.log(data.message);
+              if (success==1) {
+                  $("#dataButton").removeAttr("disabled");
+                  $("#add_client_div").hide();
+                  $("#add_session_div").hide();
+                  $("#accounting_div").hide();
+                  $("#sessionId1").val(session_id);
+                  $("#sessionId2").val(session_id);
+
+                  if (data.code==1) $("#add_client_div").show();
+                  if (data.code==3) $("#add_session_div").show();
+                  if (data.code==5) $("#accounting_div").show();
+              } else if (success==0) {
+                      alert("Login failed.  Invalid username / password.");
+
+              } else {
+                  alert("Login failed.  Could not connect to server. " + data);
+              }
+          });
+
+      }
+
+      function doLogout() {
+          $("#dataArea").text("Logging out...");
+          logout(function(success,data) {
+              $("#dataArea").text(JSON.stringify(data));
+              console.log(data);
+              if (success==1) {
+                  $("#dataButton").attr("disabled", "disabled");
+                  $("#updateButton").attr("disabled", "disabled");
+                  $("#updateSessionButton").attr("disabled", "disabled");
+                  $("#updateSessionApproveButton").attr("disabled", "disabled");
+                  $("#deleteButton").attr("disabled", "disabled");
+                  $("#add_session_div").hide();
+                  $("#add_client_div").hide();
+                  $("#accounting_div").hide();
+              } else if (success==0) {
+                  alert("Logout failed. Check console log");
+              } else {
+                  alert("Login failed.  Could not connect to server. ");
+              }
+          });
+
+      }
+
+      function loadData() {
+          $("#dataArea").text("Retrieving data...");
+          getData(function (success, data) {
+              $("#dataArea").html(JSON.stringify(data));
+              console.log(data);
+              if (success==1) {
+                 // alert("Data retrieved successfully");
+              } else {
+                  alert("Error retrieving data. " + success);
+              }
+          });
+      }
+
+      function doUpdateTimezone() {
+          updateTimezone(4, function(success, msg) {
+             console.log("Timezone response: " + success + ".");
+              console.log(msg);
+          });
+      }
+
+
+
+      function doAdd() {
+          $("#dataArea").text("Adding new client...");
+          var data = {
+              "first_name":$("#add_first").val(),
+              "last_name":$("#add_last").val(),
+              "email":$("#add_email").val(),
+              "start_date":$("#add_start").val(),
+              "sessions_allotment":$("#add_sessions").val(),
+              "sessions_frequency":$("#add_frequency").val(),
+              "tags":$("#add_tags").val(),
+              "focus_area":$("#add_focus").val(),
+              "success_metrics":$("#add_success").val(),
+              "organization_level":$("#add_level").val(),
+              "organization_id":$("#add_org_id").val()
+          };
+          console.log(JSON.stringify(data));
+          addClient(data, function (success, data) {
+                  if (success==1) {
+                      var clientId = data.code;
+                      $("#dataArea").html(JSON.stringify(data));
+                      $("#updateButton").removeAttr("disabled");
+                      $("#deleteButton").removeAttr("disabled");
+                      $("#update_client_id").val(clientId);
+                      alert("Client Added Successfully (" + clientId + ")");
+                  } else if (success==-1) {
+                      alert("Error: Call not executed.");
+                      console.log(data);
+                  } else {
+                      alert("Error adding client");
+                      console.log(data);
+                  }
+          });
+      }
+
+      function doDelete() {
+          $("#dataArea").text("Deleting...");
+
+          deleteClient($("#update_client_id").val(), function (success, data) {
+              if (success==1) {
+                  alert("Client Deleted Successfully.");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+              } else {
+                  alert("Error Deleting client");
+
+              }
+          });
+      }
+
+      function doAddSession() {
+          $("#dataArea").text("Adding new session...");
+          var data = {
+              "client_id":$("#addS_client_id").val(),
+              "session_datetime":$("#addS_date").val(),
+              "confidential_notes":$("#addS_confidential").val(),
+              "progress_notes":$("#addS_progress").val(),
+              "status_code":$("#addS_status").val(),
+              "duration":$("#addS_duration").val()
+          };
+          console.log("Adding session: " + JSON.stringify(data));
+          addSession(data, function (success, data) {
+              if (success==1) {
+                  var sessionId = data.code;
+                  $("#dataArea").html(JSON.stringify(data));
+                  $("#updateSessionButton").removeAttr("disabled");
+                  $("#updateSessionApproveButton").removeAttr("disabled");
+                  $("#update_session_id").val(sessionId);
+                  alert("Session Added Successfully (" + sessionId + ")");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+                  console.log(data);
+              } else {
+                  alert("Error adding session");
+                  console.log(data);
+              }
+          });
+      }
+
+      function doUpdate() {
+          $("#dataArea").text("Updating client focus area...");
+          var data = {
+              "focus_area":$("#add_focus").val()
+          };
+          console.log(JSON.stringify(data));
+          updateClient($("#update_client_id").val(), data, function (success, data) {
+              if (success==1) {
+                  $("#dataArea").html(JSON.stringify(data));
+                  alert("Client Updated Successfully.");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+                  console.log(data);
+              } else {
+                  alert("Error updating client");
+                  console.log(data);
+              }
+          });
+      }
+
+      function doLink() {
+          $("#dataArea").text("Linking coach...");
+          linkCoachToOrganization($("#lnk_organization_id").val(), $("#lnk_coach_id").val(), function (success, data) {
+              if (success==1) {
+                  $("#dataArea").html(JSON.stringify(data));
+                  alert("Coach Linked Successfully.");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+                  console.log(data);
+              } else {
+                  alert("Error linking coach");
+                  console.log(data);
+              }
+          });
+      }
+
+      function doUnLink() {
+          $("#dataArea").text("Linking coach...");
+          unlinkCoachToOrganization($("#lnk_organization_id").val(), $("#lnk_coach_id").val(), function (success, data) {
+              if (success==1) {
+                  $("#dataArea").html(JSON.stringify(data));
+                  alert("Coach UnLinked Successfully.");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+                  console.log(data);
+              } else {
+                  alert("Error unlinking coach");
+                  console.log(data);
+              }
+          });
+      }
+
+      function doUpdateSession() {
+          $("#dataArea").text("Updating session...");
+          var data = {
+              "confidential_notes":$("#addS_confidential").val()
+          };
+          console.log(JSON.stringify(data));
+          updateSession($("#update_session_id").val(), data, function (success, data) {
+              $("#dataArea").html(JSON.stringify(data));
+              if (success==1) {
+                  alert("Session Updated Successfully");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+                  console.log(data);
+              } else {
+                  alert("Error updating session.");
+                  console.log(data);
+              }
+          });
+      }
+      function doApproveProgress() {
+          $("#dataArea").text("Updating session...");
+          var data = {
+              "progress_notes_approved":1
+          };
+          console.log(JSON.stringify(data));
+          updateSession($("#update_session_id").val(), data, function (success, data) {
+              $("#dataArea").html(JSON.stringify(data));
+              if (success==1) {
+                  alert("Session Updated Successfully.");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+                  console.log(data);
+              } else {
+                  alert("Error updating session.");
+                  console.log(data);
+              }
+          });
+      }
+
+      function uploadDone() {
+          var ret = $("#upload_target").contents().text();
+          console.log(ret);
+          var data = eval("("+ret+")"); //Parse JSON
+          $("#dataArea").text(ret);
+
+          if(data.success=='true') { //This part happens when the image gets uploaded.
+              alert("Document upload successful.");
+          }
+          else  { //Upload failed - show user the reason.
+              alert("Upload Failed: " + data.message);
+          }
+      }
+
+      function doReport() {
+          $("#dataArea").text("Running report...");
+
+          getAccountingReport($("#report_start_date").val(), $("#report_end_date").val(), $("#report_organization_id").val(), $("#report_tags").val(), function (success, data) {
+              $("#dataArea").html(JSON.stringify(data));
+              if (success==1) {
+                  alert("Report generated successfully");
+              } else if (success==-1) {
+                  alert("Error: Call not executed.");
+              //    console.log(data);
+              } else {
+                  alert("Error running report.");
+              //    console.log(data);
+              }
+          });
+      }
+
+
+      function testAllMethods() {
+          getData(function(success, data) {console.log(""); console.log("getData:"); console.log(data);});
+
+          if (userType == USER_TYPE.ACCOUNT_MANAGER) {
+              console.log("BEGIN METHOD TEST FOR ACCOUNT MANAGER--------");
+
+              organizationId = 1;
+              coachId = 1;
+              clientId = 1;
+
+              getClientsForOrganization(organizationId, function(success, data) { console.log(""); console.log("getClientsForOrganization:"); console.log(data); });
+              getClientsForCoach(coachId, function(success, data) { console.log(""); console.log("getClientsForCoach:"); console.log(data); });
+              getSessionsForOrganization(organizationId,function(success, data) { console.log(""); console.log("getSessionsForOrganization:"); console.log(data); });
+              getSessionsForClient(clientId,function(success, data) { console.log(""); console.log("getSessionsForClient:"); console.log(data); });
+              getSessionsForCoach(coachId, function(success, data) { console.log(""); console.log("getSessionsForCoach:"); console.log(data); });
+              getOrganizations(function(success, data) { console.log(""); console.log("getOrganizations:"); console.log(data); });
+              getOrganizationsForCoach(coachId, function(success, data) { console.log(""); console.log("getOrganizationsForCoach:"); console.log(data); });
+              getCoachesForOrganization(organizationId, function(success, data) { console.log(""); console.log("getCoachesForOrganization:"); console.log(data); });
+              getCoaches(function(success, data) { console.log(""); console.log("getCoaches:"); console.log(data); });
+              getDocumentsForClient(clientId,function(success, data) { console.log(""); console.log("getDocumentsForClient:"); console.log(data); });
+              getDocumentTemplatesForOrganization(organizationId, function(success, data) { console.log(""); console.log("getDocumentTemplatesForOrganization:"); console.log(data); });
+
+              console.log("END METHOD TEST FOR ACCOUNT MANAGER--------");
+          } else if (userType == USER_TYPE.ORGANIZATION_SPONSOR) {
+              console.log("BEGIN METHOD TEST FOR ORGANIZATION SPONSOR --------");
+              coachId = 1;
+              clientId = 1;
+              getClientsForCoach(coachId, function(success, data) { console.log(""); console.log("getClientsForCoach:"); console.log(data); });
+              getSessionsForClient(clientId,function(success, data) { console.log(""); console.log("getSessionsForClient:"); console.log(data); });
+              getSessionsForCoach(coachId, function(success, data) { console.log(""); console.log("getSessionsForCoach:"); console.log(data); });
+              getCoaches(function(success, data) { console.log(""); console.log("getCoaches:"); console.log(data); });
+              getDocumentsForClient(clientId,function(success, data) { console.log(""); console.log("getDocumentsForClient:"); console.log(data); });
+              getClients(function(success, data) { console.log(""); console.log("getClients:"); console.log(data); });
+              getDocumentTemplates(function(success, data) { console.log(""); console.log("getDocumentTemplates:"); console.log(data); });
+              getSessions(function(success, data) { console.log(""); console.log("getSessions:"); console.log(data); });
+
+              console.log("END METHOD TEST FOR ORGANIZATION SPONSOR --------");
+          } else if (userType == USER_TYPE.COACH) {
+              console.log("BEGIN METHOD TEST FOR COACH--------");
+
+              organizationId = 1;
+              clientId = 1;
+
+              getClients(function(success, data) { console.log(""); console.log("getClients:"); console.log(data); });
+              getSessions(function(success, data) { console.log(""); console.log("getSessions:"); console.log(data); });
+              getClientsForOrganization(organizationId, function(success, data) { console.log(""); console.log("getClientsForOrganization:"); console.log(data); });
+              getSessionsForClient(clientId,function(success, data) { console.log(""); console.log("getSessionsForClient:"); console.log(data); });
+              getOrganizations(function(success, data) { console.log(""); console.log("getOrganizations:"); console.log(data); });
+              getDocumentsForClient(clientId,function(success, data) { console.log(""); console.log("getDocumentsForClient:"); console.log(data); });
+              getDocumentTemplatesForOrganization(organizationId, function(success, data) { console.log(""); console.log("getDocumentTemplatesForOrganization:"); console.log(data); });
+
+              console.log("END METHOD TEST FOR COACH--------");
+          } else if (userType == USER_TYPE.CLIENT) {
+              console.log("BEGIN METHOD TEST FOR CLIENT--------");
+
+              organizationId = 1;
+              coachId = 1;
+              clientId = 1;
+
+              getDocumentTemplates(function(success, data) { console.log(""); console.log("getDocumentTemplates:"); console.log(data); });
+              getDocuments(function(success, data) { console.log(""); console.log("getDocuments:"); console.log(data); });
+              getSessions(function(success, data) { console.log(""); console.log("getSessions:"); console.log(data); });
+              getOrganizations(function(success, data) { console.log(""); console.log("getOrganizations:"); console.log(data); });
+              getCoaches(function(success, data) { console.log(""); console.log("getCoaches:"); console.log(data); });
+
+              console.log("END METHOD TEST FOR CLIENT--------");
+          }
+      }
+      $(document).ready(function() {
+          var uploader = new qq.FileUploader({
+              // pass the dom node (ex. $(selector)[0] for jQuery users)
+              element: document.getElementById('file-uploader'),
+              params: {client_id: 449, document_id: 125},
+              sizeLimit: 8*1024*1024,
+              action: '/corporate/api/valums-upload',
+              debug: true
+          });
+          console.log("Uploader loaded");
+      });
+
+
+  </script>
+
+
+
+
+
+</body>
+</html>

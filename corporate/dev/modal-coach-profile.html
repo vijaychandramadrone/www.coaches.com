@@ -1,0 +1,55 @@
+<div id="modal-coach-profile">
+	<h1>Coach Profile</h1>
+	<em class="description">Please take a moment to fill out your profile. When finished, click SAVE AND CONTINUE to move along to your dashboard.</em>
+
+	<div class="overlay-content clearfix">
+		<form action="">
+			<div class="form-content">
+				<fieldset>
+					<div>
+						<input type="text" name="coach-profile-firstname" id="coach-profile-firstname" placeholder="First Name" title="First Name" />
+						<input type="text" name="coach-profile-lastname" id="coach-profile-lastname" placeholder="Last Name" title="Last Name" />
+					</div>
+
+                    <input type="text" name="coach-profile-phone" id="coach-profile-phone" placeholder="Phone" title="Phone" />
+
+                    <textarea name="coach-profile-bio" id="coach-profile-bio" readonly="readonly" placeholder="Bio..." title="Bio..."></textarea>
+					<textarea name="coach-profile-credentials" id="coach-profile-credentials" readonly="readonly" placeholder="Credentials/Expertise..." title="Credentials/Expertise..."></textarea>
+
+					<input type="text" name="coach-profile-timetrade" id="coach-profile-timetrade" placeholder="Timetrade Link" title="Timetrade Link" />
+
+					<h3>Client List</h3>
+
+					<div class="table-wrapper" id="table-clients">
+						<table>
+							<colgroup>
+								<col/>
+								<col/>
+							</colgroup>
+
+							<thead>
+								<tr>
+									<th><span>Name</span></th>
+									<th><span>Organization</span></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td class="name">_</td>
+									<td class="organization">_</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</fieldset>
+			</div><!-- /form-content -->
+
+			<div class="form-actions">
+				<input type="button" name="coach-profile-add" class="button large" id="coach-profile-add" value="Save and Continue" />
+			</div><!-- /form-actions -->
+		</form>
+
+		<span class="overlay-close">Close</span>
+	</div>
+</div>
