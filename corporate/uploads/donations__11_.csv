@@ -1,1 +1,0 @@
-SELECT comment_author, comment_author_email, comment_content, comment_date, meta_value as amount FROM wp_comments c,  cm WHERE c.comment_id=cm.comment_ID AND cm.meta_key='pfund_trans_amount' AND c.comment_post_ID = '2018' AND ( comment_approved = '0' OR comment_approved = '1')
